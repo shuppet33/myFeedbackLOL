@@ -9,15 +9,16 @@ router.post("/", (req, res) => {
 
     const body = req.body;
 
+    let dateNow = new Date()
     const commentObj = {
         name: req.body.name,
-        rating: req.body.rating,
+        // rating: req.body.rating,
         comment: req.body.comment,
-        createdAt: Date.now(),
+        createdAt:`${dateNow.getDate()}.${dateNow.getMonth() + 1}.${dateNow.getFullYear()}`,
     }
 
     comments.push(commentObj)
-    console.log(commentObj)
+
     res.json(commentObj)
 });
 

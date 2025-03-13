@@ -1,0 +1,232 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+   font-family: "Tiny5", sans-serif;
+   font-weight: 400;
+   font-style: normal;
+
+   background: url('../public/background.png');
+}
+
+form input[type=text]::placeholder {
+   color: #969696;
+}
+
+.height {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-end;
+   
+   height: 100%;
+}
+
+.container {
+   max-width: 850px;
+   margin: 0 auto;
+
+   height: 100vh;
+}
+
+.form-box {
+   height: 260px;
+
+   display: flex;
+   gap: 20px;
+   justify-content: center;
+   align-items: center;
+   margin-bottom: 10px;
+}
+
+
+.container__avatar .arrow {
+   height: 20px;
+   width: 45px;
+
+   cursor: pointer;
+
+} 
+
+.container__avatar {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 5px;
+}
+
+.container__avatar .border {
+   width: 110px;
+   height: 110px;
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   background-color: #A0A0A0;
+}
+
+.container__avatar .avatar__img {
+   width: 100px;
+   height: 100px;
+
+   background-color: #ECECEC;
+}
+
+
+.container__avatar .avatar__img img{
+   width: 100px;
+   height: 100px;
+}
+
+.form {
+   background-color: #BDBDBD;
+}
+
+.form form{
+   display: flex;
+   flex-direction: column;
+
+   gap: 10px;
+
+   padding: 20px;
+}
+
+.form input {
+   font-family: "Tiny5", sans-serif;
+   font-weight: 400;
+   font-style: normal;
+
+   font-size: 25px;
+   padding: 5px;
+
+   border: none;
+}
+
+.form input:focus-visible, .form .comment:focus-visible {
+   outline: 5px solid #A0A0A0;
+}
+
+.form .name{
+   width: 260px;
+   height: 40px;
+}
+
+
+.form .comment{
+   width: 590px;
+   height: 105px;
+
+
+   font-family: "Tiny5", sans-serif;
+   font-weight: 400;
+   font-style: normal;
+
+   font-size: 25px;
+
+   border: none;
+   resize: none;
+   padding: 5px 0 0 5px;
+}
+
+.form .comment::placeholder{
+   color: #969696;
+}
+
+.form .container__button {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.form .container__button .rating {
+   display: flex;
+   gap: 10px;
+
+   cursor: pointer;
+}
+.form .container__button .rating img {
+   width: 50px;
+}
+
+.form .container__button input {
+   background-color: #878787;
+   color: #fff;
+
+   width: 235px;
+   height: 50px;
+
+   font-size: 35px;
+
+   transition: all 0.1s;
+
+   cursor: pointer;
+}
+
+.form .container__button input:active {
+   background-color: #6b6b6b;
+}
+
+
+
+
+
+
+
+
+
+
+.backdrop-hidden {
+   pointer-events: none;
+   opacity: 0;
+}
+
+.backdrop {
+   overflow: hidden;
+   width: 100vw;
+   height: 100vh;
+
+   position: fixed;
+   inset: 0;
+
+   background-color: rgba(68, 128, 166, 0.55);
+
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   transition: opacity 0.3s;
+}
+
+.loader {
+   position: relative;
+   width: 108px;
+   display: flex;
+   justify-content: space-between;
+}
+.loader::after , .loader::before  {
+   content: '';
+   display: inline-block;
+   width: 48px;
+   height: 48px;
+   background-color: #FFF;
+   background-image:  radial-gradient(circle 14px, #0d161b 100%, transparent 0);
+   background-repeat: no-repeat;
+   border-radius: 50%;
+   animation: eyeMove 10s infinite , blink 10s infinite;
+}
+@keyframes eyeMove {
+   0%  , 10% {     background-position: 0px 0px}
+   13%  , 40% {     background-position: -15px 0px}
+   43%  , 70% {     background-position: 15px 0px}
+   73%  , 90% {     background-position: 0px 15px}
+   93%  , 100% {     background-position: 0px 0px}
+}
+@keyframes blink {
+   0%  , 10% , 12% , 20%, 22%, 40%, 42% , 60%, 62%,  70%, 72% , 90%, 92%, 98% , 100%
+   { height: 48px}
+   11% , 21% ,41% , 61% , 71% , 91% , 99%
+   { height: 18px}
+}

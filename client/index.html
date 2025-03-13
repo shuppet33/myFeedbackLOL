@@ -2,67 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./style/style.css">
     <title>my feedback LOL</title>
-
-    <style>
-
-        .backdrop-hidden {
-            pointer-events: none;
-            opacity: 0;
-        }
-
-        .backdrop {
-            overflow: hidden;
-            width: 100vw;
-            height: 100vh;
-
-            position: fixed;
-            inset: 0;
-
-            background-color: rgba(68, 128, 166, 0.55);
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            transition: opacity 0.3s;
-        }
-
-        .loader {
-            position: relative;
-            width: 108px;
-            display: flex;
-            justify-content: space-between;
-        }
-        .loader::after , .loader::before  {
-            content: '';
-            display: inline-block;
-            width: 48px;
-            height: 48px;
-            background-color: #FFF;
-            background-image:  radial-gradient(circle 14px, #0d161b 100%, transparent 0);
-            background-repeat: no-repeat;
-            border-radius: 50%;
-            animation: eyeMove 10s infinite , blink 10s infinite;
-        }
-        @keyframes eyeMove {
-            0%  , 10% {     background-position: 0px 0px}
-            13%  , 40% {     background-position: -15px 0px}
-            43%  , 70% {     background-position: 15px 0px}
-            73%  , 90% {     background-position: 0px 15px}
-            93%  , 100% {     background-position: 0px 0px}
-        }
-        @keyframes blink {
-            0%  , 10% , 12% , 20%, 22%, 40%, 42% , 60%, 62%,  70%, 72% , 90%, 92%, 98% , 100%
-            { height: 48px}
-            11% , 21% ,41% , 61% , 71% , 91% , 99%
-            { height: 18px}
-        }
-    </style>
 </head>
 <body>
 
-<h1>Введите данные</h1>
+<!-- <h1>Введите данные</h1>
 <form id="feedbackForm" action="/" method="post">
     <p>
         <label>Имя</label><br>
@@ -77,15 +27,64 @@
         <input type="text" name="comment" />
     </p>
     <input type="submit" value="Отправить" />
-</form>
+</form> -->
 
 
-<div class="backdrop">
+<!-- <div class="backdrop">
     <span class="loader"></span>
 </div>
 
-<div id="commentContainer"></div>
+<div id="commentContainer"></div> -->
 
-<script src="script.js"></script>
+
+<div class="container">
+    <div class="height">
+        <div class="feedback-box">
+            
+        </div>
+        <div class="form-box">
+
+            <div class="container__avatar">
+                <div class=" arrow arrow__up">
+                    <img src="./public/form/arrow__up.svg" alt="arrow__up">
+                </div>
+                <div class="border">
+                    <div class="avatar__img">
+                        <img src="./public/form/avatar1.png" alt="avatar">
+                    </div>
+                </div>
+                <div class="arrow arrow__down">
+                    <img src="./public/form/arrow__down.svg" alt="arrow__down">
+                </div>
+            </div>
+            <div class="form">
+                <form id="feedbackForm" action="/" method="post">
+    
+                        <input class="name" type="text" name="name" placeholder="имя"/>
+    
+       
+                        <textarea class="comment" name="comment" placeholder="комментарий"></textarea>
+    
+    
+                        <div class="container__button">
+                            <div class="rating">
+                                <img src="./public/form/star__not-active.png" alt="star__not-active">
+                                <img src="./public/form/star__not-active.png" alt="star__not-active">
+                                <img src="./public/form/star__not-active.png" alt="star__not-active">
+                                <img src="./public/form/star__not-active.png" alt="star__not-active">
+                                <img src="./public/form/star__not-active.png" alt="star__not-active">
+                            </div>
+                            <input type="submit" value="Отправить" />
+                        </div>
+                </form> 
+            </div>
+    
+        </div>
+    </div>
+</div>
+
+
+
+<script src="./script/script.js"></script>
 </body>
 </html>

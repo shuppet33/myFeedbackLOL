@@ -113,8 +113,13 @@ function clearForm (form) {
 // }
 
 function scroll() {
-    let conteinerHeight = commentContainer.scrollHeight
-    commentContainer.scrollTo(0, conteinerHeight)
+    let h = window.innerHeight - 335
+    commentContainer.style.height = h + 'px'
+
+    let containerHeight = commentContainer.scrollHeight
+    commentContainer.scrollTo(0, containerHeight)
 }
+
+scroll()
 
 getAllFeedbacks()

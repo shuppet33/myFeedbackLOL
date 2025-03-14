@@ -30,6 +30,8 @@ form input[type=text]::placeholder {
    height: 100%;
 }
 
+.hContainer {}
+
 .container {
    max-width: 850px;
    margin: 0 auto;
@@ -75,8 +77,6 @@ form input[type=text]::placeholder {
 }
 
 .container__container-feedback {
-   max-height: 62vh;
-
    overflow-y: auto;
    scroll-margin-top: 60px;
 }

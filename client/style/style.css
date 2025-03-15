@@ -18,6 +18,14 @@ form input[type=text]::placeholder {
    color: #969696;
 }
 
+.d-none {
+   display: none;
+}
+
+.d-block {
+   display: block;
+}
+
 .scroll-y {
    overflow-y: auto;
 }
@@ -28,6 +36,16 @@ form input[type=text]::placeholder {
    justify-content: flex-end;
    
    height: 100%;
+}
+
+.err {
+   color: #b2604b;
+   background-color: #bdbdbd;
+   padding: 2px 10px;
+   font-size: 20px;
+   position: absolute;
+   top: -25px;
+   left: 0;
 }
 
 .hContainer {}
@@ -50,7 +68,16 @@ form input[type=text]::placeholder {
 
    cursor: pointer;
 
-} 
+   transition: all 0.1s;
+}
+
+.arrow__up:active {
+   transform: translateY(-5px);
+}
+
+.arrow__down:active {
+   transform: translateY(5px);
+}
 
 .container__avatar {
    display: flex;
@@ -117,6 +144,8 @@ form input[type=text]::placeholder {
 
    padding: 20px;
    background-color: #BDBDBD;
+
+   position: relative;
 }
 
 .form input {

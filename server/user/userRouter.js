@@ -15,11 +15,12 @@ router.post("/", (req, res) => {
         // rating: req.body.rating,
         comment: req.body.comment,
         createdAt:`${dateNow.getDate()}.${dateNow.getMonth() + 1}.${dateNow.getFullYear()}`,
-        avatarId: 1,
+        img: req.body.imgId,
     }
 
     comments.push(commentObj)
 
+    console.log(req.body)
     res.json(commentObj)
 });
 

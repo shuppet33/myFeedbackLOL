@@ -2,7 +2,12 @@ const feedbackForm = document.getElementById('feedbackForm');
 const commentContainer = document.getElementById('commentContainer');
 const backdrop = document.querySelector('.backdrop');
 
+const errorValidation = document.querySelector('.err');
 
+const avatar = document.querySelectorAll('.avatar')
+const arrowUp = document.getElementById('arrow-up')
+const arrowDown = document.getElementById('arrow-down')
+let indexValue = 1;
 
 const spinner =  {
     activeRequest: 0,
@@ -26,41 +31,97 @@ const spinner =  {
     }
 }
 
+
+const imgId = {
+    avatarList: avatar,
+    id: 1,
+    imgShow(i) {
+
+        if (i < 1) {
+            this.id = this.avatarList.length;
+        }
+
+        if (i > avatar.length) {
+            this.id = 1;
+        }
+
+        for (let i = 0; i < this.avatarList.length; i++) {
+            this.avatarList[i].classList.add('d-none')
+        }
+
+        this.avatarList[this.id - 1].classList.remove('d-none')
+    },
+}
+
 const formData = (form) => ({
     name: form.name.value,
     // rating: form.rating.value,
     comment: form.comment.value,
+    imgId: imgId.id
 })
 
 feedbackForm.addEventListener('submit', async (event) => {
     event.preventDefault()
 
-    spinner.load()
+    // Проверка полей
+    const data = formData(feedbackForm)
+
+    if (validation(data)) {
+        errShow(errorValidation)
+        return
+    }
+    errHide(errorValidation)
+
+    // Загрузка
+    // spinner.load()
+
+
     const response = await fetch("http://localhost:8000/api/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData(feedbackForm))
+        body: JSON.stringify(data)
     }).then(res => res.json())
 
 
+    console.log('LOOOG', data)
+
+    // Очистка формы
     clearForm(feedbackForm)
 
+    //Добавление нового feedback'а
     commentContainer.appendChild(feedbackHTML(response))
 
-    spinner.loaded()
+    // spinner.loaded()
 
-
+    // Добавление скролла
     scroll()
 })
 
 const getAllFeedbacks = async () => {
-    spinner.load()
+    // spinner.load()
+
     const response = await fetch("http://localhost:8000/api/").then(res => res.json())
     response.forEach(feedback => commentContainer.appendChild(feedbackHTML(feedback)))
-    spinner.loaded()
+
+    // spinner.loaded()
 
     scroll()
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 const feedbackHTML = (feedbackItem) => {
@@ -81,7 +142,7 @@ const feedbackHTML = (feedbackItem) => {
                 <div class="avatarmini">
 
                     <div class="avatarmini__img">
-                        <img src="./public/feedback/avatarmini.png" alt="avatarmini">
+                        <img src="./public/feedback/avatarmini-${feedbackItem.img}.png" alt="avatarmini">
                     </div>
 
                 </div>
@@ -101,17 +162,6 @@ function clearForm (form) {
     form.reset();
 }
 
-
-// function scroll() {
-//     const container = document.getElementById('commentContainer')
-
-//     let heightContainer = container.getBoundingClientRect()
-//     if (heightContainer.height > 605) {
-//         container.classList.add('scroll-y')
-//     }
-//     console.log(heightContainer)
-// }
-
 function scroll() {
     let h = window.innerHeight - 335
     commentContainer.style.height = h + 'px'
@@ -120,6 +170,40 @@ function scroll() {
     commentContainer.scrollTo(0, containerHeight)
 }
 
-scroll()
+function validation(data) {
+    const arr = []
+
+    for (let i in data) {
+        arr.push(data[i])
+    }
+
+
+    for (let i of arr) {
+        if (i === '') {
+            return true
+        }
+    }
+}
+
+function errShow(err) {
+    err.classList.remove('d-none')
+}
+
+function errHide(err) {
+    err.classList.add('d-none')
+}
+
+
+arrowUp.addEventListener('click', (event) => {
+    imgId.imgShow(imgId.id += 1)
+})
+
+arrowDown.addEventListener('click', (event) => {
+    imgId.imgShow(imgId.id -= 1)
+})
 
 getAllFeedbacks()
+imgId.imgShow(1)
+
+
+

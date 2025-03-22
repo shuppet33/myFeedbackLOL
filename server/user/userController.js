@@ -1,8 +1,6 @@
-class User {
+class Feedback {
     constructor() {}
-
 
 
 }
 
-module.exports = new User;

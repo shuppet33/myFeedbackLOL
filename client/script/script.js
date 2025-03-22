@@ -7,7 +7,7 @@ const errorValidation = document.querySelector('.err');
 const avatar = document.querySelectorAll('.avatar')
 const arrowUp = document.getElementById('arrow-up')
 const arrowDown = document.getElementById('arrow-down')
-let indexValue = 1;
+
 
 const spinner =  {
     activeRequest: 0,
